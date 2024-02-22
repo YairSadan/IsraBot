@@ -5,6 +5,7 @@ import { ThemeProvider } from "../providers/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import Navbar from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
           <ThemeProvider
@@ -30,9 +31,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Navbar />
-            {/* <UserButton /> */}
-            {/* <SignInButton /> */}
-            {/* <ModeToggle /> */}
             {children}
             <Toaster />
             <SonnerToaster position="bottom-left" />
