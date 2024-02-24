@@ -38,7 +38,7 @@ const MessageBox = ({ message }: { message: Message }) => {
             isUserMessage ? "" : "flex-row-reverse"
           )}
         >
-          <p>{message.content}</p>
+          <p className="w-fit">{message.content}</p>
           <Button
             variant={"chatCopyIcon"}
             className={cn(
