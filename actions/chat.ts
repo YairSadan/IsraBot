@@ -3,40 +3,42 @@ import { db } from "../lib/db";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
+// Generate a unique key for the chat based on the messages and userId
+const generateChatKey = (messages: Message[], userId: string): string => {
+  // Combine message content for generating the key
+  const combinedContent = messages.map((message) => message.content).join("");
+  return combinedContent + userId;
+};
+
+const generatePreviousChatKey = (
+  messages: Message[],
+  userId: string,
+): string => {
+  // Remove the last two messages
+  const previousMessages = messages.slice(0, -2);
+  // Combine message content for generating the key
+  const combinedContent = previousMessages
+    .map((message) => message.content)
+    .join("");
+  return combinedContent + userId;
+};
+
 // Create/Update chat
 export const saveChat = async (messages: Message[]) => {
   const { userId } = auth();
   if (!userId) throw new Error("Unauthorized");
+  const key = generateChatKey(messages, userId);
+  const previousKey = generatePreviousChatKey(messages, userId);
 
-  const previousKey = JSON.stringify(messages.slice(0, -1));
-
-  const chat = await db.chat.findFirst({
-    where: {
-      id: previousKey,
-      userId: userId,
-    },
-    include: {
-      messages: true,
-    },
+  const chat = await db.chat.findUnique({
+    where: { id: previousKey },
+    include: { messages: true },
   });
 
-  const key = JSON.stringify(messages);
   if (chat) {
-    await db.chat.update({
-      where: {
-        id: previousKey,
-      },
-      data: {
-        id: key,
-      },
-    });
+    await db.chat.update({ where: { id: previousKey }, data: { id: key } });
   } else {
-    await db.chat.create({
-      data: {
-        id: key,
-        userId: userId,
-      },
-    });
+    await db.chat.create({ data: { id: key, userId: userId } });
   }
 
   const newMessages = messages.slice(chat ? chat.messages.length : 0);
@@ -86,4 +88,4 @@ export const getLatestChatByUserId = async (userID: string) => {
   });
 
   return chat;
-}
+};
