@@ -6,14 +6,14 @@ import React from "react";
 export default async function ChatHistoryPage({
   params,
 }: {
-  params: { userId: string };
+  params: { userId: string           };
 }) {
-  const chat = await getLatestChatByUserId(params.userId);
-  console.log(chat);
+  // const chat = await getLatestChatByUserId(params.userId);
+  // console.log(chat);
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <div className="bg-gradient-to-r from-primary to-secondary-foreground bg-clip-text text-transparent">
-        <h1 className="text-center text-xl font-bold leading-none md:text-3xl">
+                      <h1 className="text-center text-xl font-bold leading-none md:text-3xl">
           Chat History
         </h1>
       </div>

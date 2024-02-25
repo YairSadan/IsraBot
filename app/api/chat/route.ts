@@ -18,7 +18,7 @@ export async function POST(req: Request) {
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    max_tokens: 50,
+    max_tokens: 5,
     stream: true,
     messages: [
       {
@@ -31,9 +31,6 @@ export async function POST(req: Request) {
 
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response, {
-    onStart: async () => {
-      console.log(messages);
-    },
     onFinal: async (message) => {
       saveChat([...messages, { role: "system", content: message }]);
     },
