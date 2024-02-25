@@ -1,4 +1,5 @@
-import Chat from "@/components/chat";
+import { getChatsByUserId } from "@/actions/chat";
+import { ChatLayout } from "@/components/shadcn-chat/chat-layout";
 import React from "react";
 
 export default async function ChatHistoryPage({
@@ -6,17 +7,16 @@ export default async function ChatHistoryPage({
 }: {
   params: { userId: string };
 }) {
-  // const chat = await getLatestChatByUserId(params.userId);
-  // console.log(chat);
+  const chats = await getChatsByUserId(params.userId);
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
-      <div className="bg-gradient-to-r from-primary to-secondary-foreground bg-clip-text text-transparent">
-        <h1 className="text-center text-xl font-bold leading-none md:text-3xl">
-          Chat History
-        </h1>
-      </div>
-      <div className="flex w-full justify-center">
-        <Chat />
+    <div className="flex h-full w-full flex-col items-center justify-center border border-red-900 pt-24">
+      <h1 className="text-5xl">Chat History</h1>
+      <div className="z-10 h-full w-full max-w-5xl rounded-lg border text-sm lg:flex">
+        <ChatLayout
+          defaultLayout={undefined}
+          navCollapsedSize={8}
+          userChats={chats}
+        />
       </div>
     </div>
   );
