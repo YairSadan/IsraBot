@@ -70,3 +70,20 @@ export const getChatsByUserId = async (userID: string) => {
 
   return chats;
 };
+
+export const getLatestChatByUserId = async (userID: string) => {
+  const { userId } = auth();
+  if (!userId) throw new Error("Unauthorized");
+  if (userId !== userID) throw new Error("Unauthorized");
+
+  const chat = await db.chat.findFirst({
+    where: {
+      userId: userId,
+    },
+    include: {
+      messages: true,
+    },
+  });
+
+  return chat;
+}
