@@ -6,7 +6,6 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import MessageBox from "./message-box";
 import { Card } from "./ui/card";
-import { useEffect } from "react";
 
 export default function Chat() {
   const { input, messages, handleInputChange, handleSubmit } = useChat();

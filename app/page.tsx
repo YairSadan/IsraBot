@@ -1,5 +1,4 @@
-import Chat from "@/components/chat";
-import { SignIn } from "@clerk/nextjs";
+import Completion from "@/components/completion";
 
 export default function Home() {
   return (
@@ -12,7 +11,7 @@ export default function Home() {
         </h1>
       </div>
       <div className="w-full flex justify-center z-10">
-        <Chat />
+        <Completion />
       </div>
     </section>
   );
