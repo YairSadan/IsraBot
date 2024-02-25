@@ -1,12 +1,10 @@
-import { getLatestChatByUserId } from "@/actions/chat";
 import Chat from "@/components/chat";
-import MessageBox from "@/components/message-box";
 import React from "react";
 
 export default async function ChatHistoryPage({
   params,
 }: {
-  params: { userId: string           };
+  params: { userId: string };
 }) {
   // const chat = await getLatestChatByUserId(params.userId);
   // console.log(chat);
