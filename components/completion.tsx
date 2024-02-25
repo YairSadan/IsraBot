@@ -20,9 +20,9 @@ export default function Completion() {
   });
 
   return (
-    <div className="flex flex-col w-full max-w-md py-12 mx-auto space-y-4 justify-center items-center">
+    <div className="mx-auto flex w-full max-w-md flex-col items-center justify-center space-y-4 py-12">
       {completion && (
-        <Card className="w-full max-h-80 overflow-y-hidden overflow-scroll">
+        <Card className="max-h-80 w-full overflow-scroll overflow-y-hidden">
           <MessageBox
             message={{ role: "system", content: completion, id: completion }}
           />
@@ -32,7 +32,7 @@ export default function Completion() {
         onSubmit={handleSubmit}
         className="flex w-full max-w-sm items-center space-x-2"
       >
-        <div className="flex relative w-full">
+        <div className="relative flex w-full">
           <Input
             value={input}
             placeholder="Enter the idiotic comment..."

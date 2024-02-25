@@ -11,9 +11,9 @@ export default function Chat() {
   const { input, messages, handleInputChange, handleSubmit } = useChat();
 
   return (
-    <div className="flex flex-col w-full max-w-md py-12 mx-auto space-y-4 justify-center items-center">
+    <div className="mx-auto flex w-full max-w-md flex-col items-center justify-center space-y-4 py-12">
       {messages[0] && (
-        <Card className="w-full max-h-80 overflow-y-hidden overflow-scroll">
+        <Card className="max-h-80 w-full overflow-scroll overflow-y-hidden">
           {messages.map((message) => (
             <MessageBox key={message.id} message={message} />
           ))}

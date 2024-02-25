@@ -17,7 +17,7 @@ const MessageBox = ({ message }: { message: Message }) => {
 
   return (
     <div
-      className={`flex m-2 ${isUserMessage ? "flex-row" : "flex-row-reverse"}`}
+      className={`m-2 flex ${isUserMessage ? "flex-row" : "flex-row-reverse"}`}
     >
       <Avatar className={cn(isUserMessage ? "mr-2" : "ml-2")}>
         <AvatarImage
@@ -29,13 +29,13 @@ const MessageBox = ({ message }: { message: Message }) => {
       <div
         className={cn(
           "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
-          isUserMessage ? "bg-primary text-primary-foreground" : "bg-muted"
+          isUserMessage ? "bg-primary text-primary-foreground" : "bg-muted",
         )}
       >
         <div
           className={cn(
-            "gap-x-2 flex items-center",
-            isUserMessage ? "" : "flex-row-reverse"
+            "flex items-center gap-x-2",
+            isUserMessage ? "" : "flex-row-reverse",
           )}
         >
           <p className="w-fit">{message.content}</p>
@@ -44,12 +44,12 @@ const MessageBox = ({ message }: { message: Message }) => {
             className={cn(
               isUserMessage
                 ? "bg-secondary/10 hover:bg-secondary/30"
-                : "bg-primary/10 hover:bg-primary/30"
+                : "bg-primary/10 hover:bg-primary/30",
             )}
             size={"chatCopyIcon"}
             onClick={() => copyToClipboard(message.content)}
           >
-            <CopyIcon className="w-4 h-4" />
+            <CopyIcon className="h-4 w-4" />
           </Button>
         </div>
       </div>
