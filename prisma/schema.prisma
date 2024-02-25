@@ -16,22 +16,23 @@ datasource db {
 model Chat {
   id       String    @id @default(uuid())
   messages Message[]
-  user     User      @relation(fields: [userId], references: [id])
   userId   String
 }
 
 model Message {
   id      String @id @default(uuid())
-  role    String @default("System")
+  role    Role   @default(system)
   content String
-  user    User   @relation(fields: [userId], references: [id])
   userId  String
   chat    Chat   @relation(fields: [chatId], references: [id])
   chatId  String
 }
 
-model User {
-  id       String    @id @default(uuid())
-  messages Message[]
-  chats    Chat[]
+enum Role {
+  function
+  system
+  user
+  tool
+  assistant
+  data
 }
