@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import ChatBottombar from "./chat-bottombar";
 import { Message } from "ai/react";
+import { useUser } from "@clerk/nextjs";
 
 interface ChatListProps {
   messages?: Message[];
@@ -22,7 +23,7 @@ export function ChatList({
   isInputEnabled,
 }: ChatListProps) {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
-
+  const { user } = useUser();
   React.useEffect(() => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop =
@@ -78,7 +79,7 @@ export function ChatList({
                 {message.role !== "user" && (
                   <Avatar className="flex items-center justify-center">
                     <AvatarImage
-                      src={"/vercel.svg"}
+                      src={`${user?.imageUrl || "/vercel.svg"}`}
                       alt={"todo"}
                       width={6}
                       height={6}
