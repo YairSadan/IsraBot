@@ -20,7 +20,7 @@ export function Chat() {
         setExistingChat(null);
         return;
       }
-      const response = await fetch(`/api/chat/${chatId}`);
+      const response = await fetch(`https://isra-bot.vercel.app/api/chat/${chatId}`);
       setExistingChat(await response.json());
     }
     fetchChat();
