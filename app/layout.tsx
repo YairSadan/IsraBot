@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "IsraBot",
   description: "A chatbot who will stand by you with the most stupid people",
 };
-
+export const runtime = 'edge'
 export default function RootLayout({
   children,
 }: Readonly<{
