@@ -5,7 +5,7 @@ export default authMiddleware({
   publicRoutes: ['/', '/sign-in', '/sign-up', ],
   // Routes that can always be accessed, and have
   // no authentication information
-  ignoredRoutes: ["/api/completion",'/contact' , '/about', '/israelIcon.svg', '/israelIcon.png', '/favicon.ico']
+  ignoredRoutes: ["/api/completion",'/contact' , '/about', '/israelIcon.svg', '/israelicon.png', '/favicon.ico']
 });
 
 export const config = {
