@@ -10,7 +10,7 @@ const Navar = async () => {
       <aside className="flex items-center gap-2">
         <Link href={"/"}>
           <Image
-            src={"/israelIcon.webp"}
+            src={"/israelIcon.png"}
             width={40}
             height={40}
             alt="israbot logo"

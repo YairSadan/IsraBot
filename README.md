@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Israbot
 
+## Overview
+
+The Israbot mission is to provide you with a meaningful comment to idiotic comments around the web please note that this tool is just for fun and use it with your own judgement
+
+## Features
+
+- **Single Prompt:** Get a respond to comment.
+- **Chat:** Chat with Israbot and get any information you need.
+- **Store your chats:** Chats are stored and retrieved from a database.
+
+## Watch production website
+
+Follow this link to watch the application in production
+
+- [Todos]https://isra-bot.vercel.app
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Node.js](https://nodejs.org/en/) (Version 20 or later)
+- [PnpM](https://pnpm.io/) 
+- A modern web browser
+- [PostgreSQL Server](https://www.postgresql.org/download/) (running remotely for prisma accelerate)
+- prisma accelerate account
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/YairSadan/IsraBot.git
 
-## Learn More
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Navigate to the project repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   - cd Hackathon
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```
 
-## Deploy on Vercel
+3. Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   pnpm i
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```
+
+### Configuring the Database
+
+1. Ensure your remote PostgreSQL server is running.
+2. Populate the fields at the .env file accordingly
+
+### Running the Application
+
+1. Open separate terminal at todos.client folder
+2. Launch the frontend
+   #### For production
+   ```bash
+   npm run build
+   npm start
+   ```
+   #### For development
+   ```bash
+   npm run dev
+   ```
+
+
+### Contributing
+
+Contributions to the Todos application are welcome. Please follow the steps below to contribute:
+
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature-branch).
+3. Make your changes and commit them (git commit -am 'Add some feature').
+4. Push to the branch (git push origin feature-branch).
+5. Create a new Pull Request.
