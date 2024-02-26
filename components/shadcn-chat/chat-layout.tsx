@@ -57,7 +57,7 @@ export function ChatLayout({
           sizes,
         )}`;
       }}
-      className="h-full items-stretch"
+      className="h-full items-stretch bg-background"
     >
       <ResizablePanel
         defaultSize={defaultLayout[0]}
