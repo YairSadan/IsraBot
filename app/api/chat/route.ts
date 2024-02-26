@@ -15,6 +15,8 @@ const openai = new OpenAI({
 export const runtime = "edge";
 
 export async function POST(req: Request) {
+  const { userId } = auth();
+  if (!userId) throw new Error("Unauthorized");
   const { messages } = await req.json();
 
   // Ask OpenAI for a streaming chat completion given the prompt
@@ -34,7 +36,7 @@ export async function POST(req: Request) {
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response, {
     onFinal: async (message) => {
-      saveChat([...messages, { role: "system", content: message }]);
+      saveChat([...messages, { role: "system", content: message }], userId);
     },
   });
 
@@ -62,9 +64,8 @@ const generatePreviousChatKey = (
 };
 
 // Create/Update chat
-const saveChat = async (messages: Message[]) => {
-  const { userId } = auth();
-  if (!userId) throw new Error("Unauthorized");
+const saveChat = async (messages: Message[], userId: string) => {
+
   const key = generateChatKey(messages, userId);
   const previousKey = generatePreviousChatKey(messages, userId);
 
