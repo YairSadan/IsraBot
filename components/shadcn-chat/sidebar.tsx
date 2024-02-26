@@ -14,6 +14,7 @@ import { Avatar } from "../ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { DotsHorizontalIcon, Pencil2Icon } from "@radix-ui/react-icons";
 import { useAuth, useUser } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -30,11 +31,12 @@ interface SidebarProps {
 export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
   const { userId } = useAuth();
   const { user } = useUser();
+  const pathname = usePathname();
   if (!userId || !user) return null;
   return (
     <div
       data-collapsed={isCollapsed}
-      className="group relative flex h-full flex-col gap-4 p-2 data-[collapsed=true]:p-2 "
+      className="group relative flex h-full flex-col gap-4 overflow-y-auto p-2 data-[collapsed=true]:p-2"
     >
       {!isCollapsed && (
         <div className="flex items-center justify-between p-2">
@@ -54,7 +56,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
               <DotsHorizontalIcon />
             </Link>
             <Link
-              href="#"
+              href={pathname}
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
                 "h-9 w-9",
@@ -72,7 +74,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
               <Tooltip key={index} delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Link
-                    href={`/${userId}/chat-history/${link.id}`}
+                    href={pathname + "?chatId=" + link.id}
                     className={cn(
                       buttonVariants({ variant: link.variant, size: "icon" }),
                       "h-11 w-11 md:h-16 md:w-16",
@@ -114,7 +116,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
           ) : (
             <Link
               key={index}
-              href={`/${userId}/chat-history/${link.id}`}
+              href={pathname + "?chatId=" + link.id}
               className={cn(
                 buttonVariants({ variant: link.variant, size: "xl" }),
                 link.variant === "grey" &&

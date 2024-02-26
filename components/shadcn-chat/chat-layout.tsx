@@ -9,16 +9,20 @@ import { cn } from "@/lib/utils";
 import { Chat } from "./chat";
 import { Sidebar } from "./sidebar";
 import { useAuth } from "@clerk/nextjs";
+import { Message } from "ai/react";
 
 interface ChatLayoutProps {
   defaultLayout: number[] | undefined;
   defaultCollapsed?: boolean;
   navCollapsedSize: number;
-  userChats: any;
+  userChats: {
+    messages: Message[];
+    id: string;
+  }[];
 }
 
 export function ChatLayout({
-  defaultLayout = [320, 480],
+  defaultLayout = [30, 70],
   defaultCollapsed = false,
   navCollapsedSize,
   userChats,

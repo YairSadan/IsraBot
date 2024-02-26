@@ -28,8 +28,7 @@ export default function ChatBottombar({
   };
 
   const handleThumbsUp = (event: any) => {
-    onSubmit();
-    setMessage("");
+    // todo: send thumbs up
   };
 
   const handleSend = (event: any) => {

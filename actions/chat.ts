@@ -1,12 +1,7 @@
 import { Message } from "ai/react";
-import { $Enums, Message as PrismaMessage } from "@prisma/client/edge";
 import { db } from "../lib/db";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { Chat } from "@prisma/client/edge";
-import { Prisma } from "@prisma/client/edge";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 // Generate a unique key for the chat based on the messages and userId
 const generateChatKey = (messages: Message[], userId: string): string => {
@@ -78,19 +73,16 @@ export const getChatsByUserId = async (userID: string) => {
   return chats;
 };
 
-export const getLatestChatByUserId = async (userID: string) => {
+export const getChatById = async (chatId: string) => {
   const { userId } = auth();
   if (!userId) throw new Error("Unauthorized");
-  if (userId !== userID) throw new Error("Unauthorized");
 
-  const chat = await db.chat.findFirst({
-    where: {
-      userId: userId,
-    },
-    include: {
-      messages: true,
-    },
+  const chat = await db.chat.findUnique({
+    where: { id: chatId },
+    include: { messages: true },
   });
+
+  if (!chat) throw new Error("Chat not found");
 
   return chat;
 };
