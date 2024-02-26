@@ -51,7 +51,7 @@ Follow this link to watch the application in production
 ### Configuring the Database
 
 1. Ensure your remote PostgreSQL server is running.
-2. Populate the fields at the .env file accordingly
+2. Populate the fields at the .env file accordingly (Contact me if you need help with that)
 
 ### Running the Application
 
@@ -70,7 +70,7 @@ Follow this link to watch the application in production
 
 ### Contributing
 
-Contributions to the Todos application are welcome. Please follow the steps below to contribute:
+Contributions to the IsraBot are welcome. Please follow the steps below to contribute:
 
 1. Fork the repository.
 2. Create a new branch (git checkout -b feature-branch).
