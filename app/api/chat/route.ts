@@ -38,6 +38,9 @@ export async function POST(req: Request) {
     onFinal: async (message) => {
       saveChat([...messages, { role: "system", content: message }], userId);
     },
+    onCompletion: async (message) => {
+      saveChat([...messages, { role: "system", content: message }], userId);
+    }
   });
 
   // Respond with the stream
