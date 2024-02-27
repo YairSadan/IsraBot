@@ -85,7 +85,7 @@ export function ChatLayout({
         <Sidebar
           isCollapsed={isCollapsed || isMobile}
           links={userChats.map((chat: any) => ({
-            name: chat.messages[0].content,
+            name: chat.messages[0]?.content,
             messages: chat.messages ?? [],
             id: chat.id,
             variant: "grey",

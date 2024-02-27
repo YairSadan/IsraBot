@@ -1,39 +1,37 @@
 "use client";
 import { ChatList } from "./chat-list";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useChat } from "ai/react";
 import { useSearchParams } from "next/navigation";
-import { getChatById } from "@/actions/chat";
+import { saveChat } from "@/actions/chat";
 
 export function Chat() {
-  const { input, messages, handleInputChange, handleSubmit } = useChat();
+  const { input, messages, setMessages, handleInputChange, handleSubmit } =
+    useChat({
+      onFinish: async (message) => {
+        saveChat([{ role: "user", content: input, id: "input" }, message]);
+      },
+    });
   const searchParams = useSearchParams();
-
-  const [existingChat, setExistingChat] = useState<Awaited<
-    ReturnType<typeof getChatById>
-  > | null>(null);
 
   useEffect(() => {
     const chatId = searchParams.get("chatId");
     async function fetchChat() {
-      if (!chatId) {
-        setExistingChat(null);
-        return;
-      }
       const response = await fetch(`/api/chat/${chatId}`);
-      setExistingChat(await response.json());
+      const data = await response.json();
+      setMessages(data.messages);
     }
-    fetchChat();
-  }, [searchParams]);
+    if (chatId) fetchChat();
+    else setMessages([]);
+  }, [searchParams, setMessages]);
 
   return (
     <div className="flex h-full w-full flex-col justify-between">
       <ChatList
-        messages={existingChat?.messages || messages}
+        messages={messages}
         onSubmit={handleSubmit}
         input={input}
         onInputChange={handleInputChange}
-        isInputEnabled={!!!existingChat?.messages}
       />
     </div>
   );

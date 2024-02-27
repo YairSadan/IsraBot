@@ -1,3 +1,4 @@
+"use server";
 import { Message } from "ai/react";
 import { db } from "../lib/db";
 import { auth } from "@clerk/nextjs";
@@ -12,7 +13,7 @@ const generateChatKey = (messages: Message[], userId: string): string => {
 
 const generatePreviousChatKey = (
   messages: Message[],
-  userId: string,
+  userId: string
 ): string => {
   // Remove the last two messages
   const previousMessages = messages.slice(0, -2);
@@ -51,8 +52,6 @@ export const saveChat = async (messages: Message[]) => {
       userId: userId,
     })),
   });
-
-  return NextResponse.json({ success: true });
 };
 
 // Read chat

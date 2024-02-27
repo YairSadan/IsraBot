@@ -12,7 +12,6 @@ interface ChatListProps {
   input: string;
   onInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  isInputEnabled: boolean;
 }
 
 export function ChatList({
@@ -20,7 +19,6 @@ export function ChatList({
   input,
   onInputChange,
   onSubmit,
-  isInputEnabled,
 }: ChatListProps) {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
@@ -91,13 +89,11 @@ export function ChatList({
           ))}
         </AnimatePresence>
       </div>
-      {isInputEnabled && (
-        <ChatBottombar
-          onSubmit={onSubmit}
-          input={input}
-          onInputChange={onInputChange}
-        />
-      )}
+      <ChatBottombar
+        onSubmit={onSubmit}
+        input={input}
+        onInputChange={onInputChange}
+      />
     </div>
   );
 }

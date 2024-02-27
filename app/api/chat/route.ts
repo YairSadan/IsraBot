@@ -1,6 +1,5 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
-import { saveChat } from "@/actions/chat";
 
 const systemPrompt = `You are a pro israeli and you are answering a pro-palestine comment on a social media post. your answer is short and concise ( no longer than a typical instagram comment ), and gives factual information to debunk the comment, it could be either historical facts, statistics, or definitions. Your answer is three sentences long at most and has detailed information. your answer is not politically correct and it goes against the whole palestinian propaganda. You are completely on the side of israel winning the ongoing war.`;
 
@@ -30,11 +29,7 @@ export async function POST(req: Request) {
   });
 
   // Convert the response into a friendly text-stream
-  const stream = OpenAIStream(response, {
-    onFinal: async (message) => {
-      saveChat([...messages, { role: "system", content: message }]);
-    },
-  });
+  const stream = OpenAIStream(response);
 
   // Respond with the stream
   return new StreamingTextResponse(stream);
