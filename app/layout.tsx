@@ -7,7 +7,7 @@ import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Navbar from "@/components/navbar";
-
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -32,6 +32,7 @@ export default function RootLayout({
           >
             <Navbar />
             {children}
+            <Analytics />
             <Toaster />
             <SonnerToaster position="bottom-left" />
           </ThemeProvider>
