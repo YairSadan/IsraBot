@@ -3,7 +3,7 @@ import React from "react";
 const AboutPage = () => {
   return (
     <div className="flex h-full w-full flex-col p-8 md:p-24">
-      <h1 className="mb-6 scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
+      <h1 className="mb-6 mt-8 scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
         Israbot
       </h1>
       <div className="mx-auto max-w-3xl">

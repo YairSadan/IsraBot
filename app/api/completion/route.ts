@@ -13,7 +13,7 @@ export const runtime = "edge";
 export async function POST(req: Request) {
   // Extract the `prompt` from the body of the request
   const { prompt } = await req.json();
-  const singlePrompt = `${systemPrompt} The comment is: ${prompt}`;
+  const singlePrompt = `${systemPrompt} The comment you responding to is: ${prompt}`;
 
   // Ask OpenAI for a streaming completion given the prompt
   const response = await openai.completions.create({
