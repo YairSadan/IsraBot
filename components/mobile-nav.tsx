@@ -21,14 +21,36 @@ export function MobileNav({ userId }: MobileNavProps) {
           variant={"ghost"}
           className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <Image
-            src={"/israelicon.png"}
-            width={40}
-            height={40}
-            alt="israbot logo"
-            className="rounded-full"
-          />
-          <span className="text-xl font-bold"> Israbot.</span>
+          <svg
+            strokeWidth="1.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+          >
+            <path
+              d="M3 5H11"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+            <path
+              d="M3 12H16"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+            <path
+              d="M3 19H21"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+          </svg>
+          <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="pr-0">
@@ -44,7 +66,7 @@ export function MobileNav({ userId }: MobileNavProps) {
             alt="israbot logo"
             className="rounded-full"
           />
-          <span className="font-bold">Israbot.</span>
+          <span className=" ml-2 font-bold">Israbot.</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
