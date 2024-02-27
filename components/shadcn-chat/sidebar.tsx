@@ -29,10 +29,9 @@ interface SidebarProps {
 }
 
 export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
-  const { userId } = useAuth();
   const { user } = useUser();
   const pathname = usePathname();
-  if (!userId || !user) return null;
+  if (!user) return null;
   return (
     <div
       data-collapsed={isCollapsed}
@@ -50,7 +49,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "h-9 w-9",
+                "h-9 w-9"
               )}
             >
               <DotsHorizontalIcon />
@@ -59,7 +58,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
               href={pathname}
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "h-9 w-9",
+                "h-9 w-9"
               )}
             >
               <Pencil2Icon />
@@ -79,7 +78,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
                       buttonVariants({ variant: link.variant, size: "icon" }),
                       "h-11 w-11 md:h-16 md:w-16",
                       link.variant === "grey" &&
-                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
+                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                     )}
                   >
                     <div className="relative flex w-[30px] items-center border-4 border-red-900">
@@ -121,7 +120,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
                 buttonVariants({ variant: link.variant, size: "xl" }),
                 link.variant === "grey" &&
                   "shrink dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
-                "justify-start gap-4",
+                "justify-start gap-4"
               )}
             >
               <div className="relative flex w-[30px] items-center border-4 border-red-900">
@@ -154,7 +153,7 @@ export function Sidebar({ links, isCollapsed, isMobile }: SidebarProps) {
                 )}
               </div>
             </Link>
-          ),
+          )
         )}
       </nav>
     </div>
