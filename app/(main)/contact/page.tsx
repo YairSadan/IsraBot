@@ -41,7 +41,7 @@ const ContactPage = () => {
           A Glimpse Into My World:
         </h3>
         <Button asChild size={"xl"}>
-          <Link href={"https://www.instagram.com/yair_sadan1?igsh=MXNIZT-M3NGJ5M3Ntag%3D%3R&utm_source=gr"} target="_blank">
+          <Link href={"https://www.instagram.com/yair_sadan1?igsh=MXNlZTM3NGJ5M3Ntag%3D%3D&utm_source=qr"} target="_blank">
             <InstagramLogoIcon width={40} height={40} />
             <span className="ml-2">Instagram</span>
           </Link>
