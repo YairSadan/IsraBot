@@ -22,7 +22,7 @@ const Navar = async () => {
       <nav className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] transform md:block">
         <ul className="flex items-center justify-center text-sm gap-1 ml-9 sm:ml-0 sm:text-xl sm:gap-8">
           <Link href={user ? `/${user.id}/chat-history` : "/sign-in"}>
-            History
+            Chat
           </Link>
           <Link href={"/about"}>About</Link>
           <Link href={"/contact"}>Contact</Link>
