@@ -3,10 +3,12 @@ import React from "react";
 const AboutPage = () => {
   return (
     <div className="flex h-full w-full flex-col p-8 md:p-24">
-      <h1 className="mb-6 mt-8 scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
-        Israbot
-      </h1>
-      <div className="mx-auto max-w-3xl">
+      <div className="bg-gradient-to-r from-secondary-foreground to-accent bg-clip-text text-transparent pt-8 ">
+        <h1 className="text-center text-5xl font-bold leading-none md:text-[175px]">
+          about
+        </h1>
+      </div>
+      <div className="mx-auto py-4 max-w-3xl">
         <p className="text-md mb-4 font-serif leading-7 md:text-xl [&:not(:first-child)]:mt-6">
           The idea behind this application is to give us the necessary
           information in order for us to have the power to respond to any stupid
