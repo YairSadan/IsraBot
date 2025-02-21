@@ -9,7 +9,7 @@ export async function GET(
   const { userId } = auth();
   if (!userId) return new Response("Unauthorized", { status: 401 });
 
-  const { chatId } = await params;
+  const chatId = params.chatId;
   if (!chatId) return new Response("Missing chatId", { status: 400 });
 
   const chat = await db.chat.findUnique({
