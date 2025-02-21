@@ -1,7 +1,11 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
+import { NextRequest } from "next/server";
 
-export async function GET({ params }: { params: Promise<{ chatId: string }> }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { chatId: string } }
+) {
   const { userId } = auth();
   if (!userId) return new Response("Unauthorized", { status: 401 });
 
