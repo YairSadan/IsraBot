@@ -16,11 +16,10 @@ export async function POST(req: Request) {
   const singlePrompt = `${systemPrompt} The comment you responding to is: ${prompt}`;
 
   // Ask OpenAI for a streaming completion given the prompt
-  const response = await openai.completions.create({
-    model: "gpt-3.5-turbo-instruct",
-    max_tokens: 200,
+  const response = await openai.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [{ role: "system", content: singlePrompt }],
     stream: true,
-    prompt: singlePrompt,
   });
 
   // Convert the response into a friendly text-stream
